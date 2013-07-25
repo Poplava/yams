@@ -1,0 +1,43 @@
+._radius(@r: 5px) {
+  -webkit-border-radius: @r;
+  -moz-border-radius: @r;
+  border-radius: @r;
+}
+
+._shadow(@s) {
+  -webkit-box-shadow: @s;
+  -moz-box-shadow: @s;
+  box-shadow: @s;
+}
+
+._transform(@t) {
+  -webkit-transform: @t;
+  -moz-transform: @t;
+  transform: @t;
+}
+
+._transition(@t) {
+  -webkit-transition: @t;
+  -moz-transition: @t;
+  transition: @t;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+// Sign in form
+.form-signin {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 20px auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  position: relative;
+  ._radius;
+  ._shadow(0 1px 2px fade(#000, 5%));
+  .form-signin-heading {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
