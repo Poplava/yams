@@ -37,3 +37,38 @@ body {
   margin-bottom: 10px;
   text-align: center;
 }
+.auth-box {
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.auth-box header {
+  background: #333;
+  color: #f9f9f9;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  padding: 5px 10px;
+}
+.auth-box header h2 {
+  margin: 0;
+}
+.auth-box section {
+  padding: 10px 10px 0;
+}
+.auth-box section form {
+  margin: 0;
+}
+.auth-box section input {
+  margin: 0;
+}

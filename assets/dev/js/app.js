@@ -1,29 +1,19 @@
-var App = angular.module("app", []);
+'use strict';
 
-App.config(function($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
-    $routeProvider
-        .when('/', {
-            controller: 'IndexController',
-            templateUrl: '/assets/dev/templates/SignIn.html'
-        })
-        .when('/signup', {
-            controller: 'SignUpController',
-            templateUrl: '/assets/dev/templates/SignUp.html'
-        })
-        .otherwise({
-            redirectTo: '/'
+var app = angular.module('yams', [])
+    .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+
+        $routeProvider.when('/', {
+            templateUrl:    '/assets/dev/templates/index.html',
+            controller:     'IndexCtrl'
         });
-});
 
-var Controllers = {};
+        $routeProvider.when('/register', {
+            templateUrl:    '/assets/dev/templates/register.html',
+            controller:     'RegisterCtrl'
+        });
 
-Controllers.IndexController = function($scope, $http) {
+        $routeProvider.otherwise({redirectTo:'/'});
 
-};
-
-Controllers.SignUpController = function($scope, $http) {
-
-};
-
-App.controller(Controllers);
+        $locationProvider.html5Mode(true);
+}]);
