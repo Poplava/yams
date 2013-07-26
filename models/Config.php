@@ -15,6 +15,16 @@ class Config
     static public function get($name, $params = array())
     {
         $config = yaml_parse_file("configs/{$name}.yaml");
-        return $config['default'];
+        $result = [];
+        foreach($config as $key => $configLink)
+        {
+            if($key === 'default') continue;
+            if($configLink['key'] == $params) $result[] = $configLink['value'];
+        }
+
+        if(empty($result) && isset($config['default'])) $result = $config['default'];
+        elseif(count($result) == 1) $result = current($result);
+
+        return $result;
     }
 }

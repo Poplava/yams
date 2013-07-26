@@ -1,4 +1,6 @@
-default:
+- key:
+    dbName: default
+  value:
     host: localhost
     username: yams
     password: ''
