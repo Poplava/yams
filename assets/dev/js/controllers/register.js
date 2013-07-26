@@ -23,9 +23,12 @@ app.controller('RegisterCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.submitForm = function() {
         if($scope.validate()) {
             $scope.loading = !0;
-            $http.post('/register', $scope.regData).success(function() {
+            delete($scope.regData.passwordConfirm);
+            $http.post('/register', $scope.regData).success(function(res) {
+                console.log(res);
                 $scope.loading = !1;
             }).error(function() {
+                console.log(res);
                 $scope.loading = !1;
             });
         }
