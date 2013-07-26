@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic&subset=latin,cyrillic);
 body {
   background: #f9f9f9;
 }
@@ -8,8 +9,7 @@ body {
 }
 .site-header .logo {
   float: left;
-  font-size: 26px;
-  line-height: 30px;
+  font: 40px/30px 'Ubuntu', sans-serif;
   font-weight: bold;
 }
 .site-header .logo a {

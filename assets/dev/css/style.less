@@ -1,26 +1,6 @@
-._radius(@r: 5px) {
-  -webkit-border-radius: @r;
-  -moz-border-radius: @r;
-  border-radius: @r;
-}
+@import "mixin";
 
-._shadow(@s) {
-  -webkit-box-shadow: @s;
-  -moz-box-shadow: @s;
-  box-shadow: @s;
-}
-
-._transform(@t) {
-  -webkit-transform: @t;
-  -moz-transform: @t;
-  transform: @t;
-}
-
-._transition(@t) {
-  -webkit-transition: @t;
-  -moz-transition: @t;
-  transition: @t;
-}
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic&subset=latin,cyrillic);
 
 body {
   background: #f9f9f9;
@@ -32,8 +12,7 @@ body {
   margin: 0 0 20px;
   .logo {
     float: left;
-    font-size: 26px;
-    line-height: 30px;
+    font: 40px/30px 'Ubuntu', sans-serif;
     font-weight: bold;
     a {
       color: #333;
