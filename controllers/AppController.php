@@ -5,7 +5,7 @@
 **/
 class AppController extends Controller
 {
-    public function run()
+    public function run($params = array())
     {
         $assets = Config::get('assets');
         $this->view('app', $assets);

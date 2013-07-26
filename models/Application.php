@@ -11,6 +11,10 @@ class Application
     **/
     public function __construct()
     {
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'on');
+        ini_set('html_errors', 'on');
+
         spl_autoload_register(array($this, '_autoLoader'));
     }
 

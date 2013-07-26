@@ -12,7 +12,7 @@ class Config
      *
      * @return mixed
     **/
-    static public function get($name, $params)
+    static public function get($name, $params = array())
     {
         $config = yaml_parse_file("configs/{$name}.yaml");
         return $config['default'];

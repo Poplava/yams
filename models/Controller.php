@@ -12,7 +12,7 @@ abstract class Controller
      *
      * @param $params - array of params
     **/
-    abstract public function run($params);
+    abstract public function run($params = array());
 
     /**
      * Function renders view from views/*
