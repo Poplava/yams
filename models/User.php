@@ -5,6 +5,8 @@
 **/
 class User
 {
+    static $_salt = 'sh1239shgdfhgdfgnzxcd';
+
     /**
      * Function creates new user and returns its id
      *
@@ -34,7 +36,7 @@ class User
             array(
                 ':email'        => $userData['email'],
                 ':login'        => $userData['login'],
-                ':passwordHash' => crypt($userData['password'], "sh1239shgdfhgdfgnzxcd"),
+                ':passwordHash' => crypt($userData['password'], self::$_salt),
                 ':firstName'    => $userData['firstName'],
                 ':lastName'     => $userData['lastName'],
             )
