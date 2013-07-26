@@ -21,7 +21,15 @@ class Application
     **/
     protected function _autoLoader($className)
     {
-        require_once("models/{$className}.php");
+        $fileName = "models/{$className}.php";
+        if(is_file($fileName))
+        {
+            require_once($fileName);
+        }
+        else
+        {
+            //@TODO errors handling
+        }
     } 
 
     /**
@@ -29,6 +37,9 @@ class Application
     **/
     public function run()
     {
-        //routing 
+        //@TODO make routing
+        require_once('controllers/AppController.php');
+        $controller = new AppController();
+        $controller->run();
     }
 }
