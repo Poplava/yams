@@ -4,8 +4,11 @@
     </header>
     <section>
         <form>
+            <div class="alert alert-danger" ng-class="{ hidden: !errors.form }">
+                There were problems creating your account.
+            </div>
             <div class="control-group">
-                <input ng-model="regData.email" type="email" class="input-block-level" placeholder="Email" />
+                <input ng-model="regData.email" type="text" class="input-block-level" placeholder="Email" />
             </div>
             <div class="control-group">
                 <input ng-model="regData.login" type="text" class="input-block-level" placeholder="Login" />
