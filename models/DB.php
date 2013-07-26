@@ -31,15 +31,16 @@ class DB
     /**
      * Function makes query with params and returns all results
      *
-     * @param $params - array of binded params
+     * @param $sql      - string
+     * @param $params   - array of binded params
      *
      * @return array, result of query
     **/
     public function query($sql, $params = array())
     {
-        $statement = self::$_connections[$this->_dbName]->query($sql);
+        $stmt = $this->_prepareAndBindParams($sql, $params);
         $result = [];
-        foreach($statement->fetch(PDO::FETCH_ASSOC) as $row)
+        foreach($stmt->fetch(PDO::FETCH_ASSOC) as $row)
         {
             $result[] = $row;
         }
@@ -50,28 +51,30 @@ class DB
     /**
      * Function makes query with params and returns 1 row
      *
-     * @param $params - array of binded params
+     * @param $sql      - string
+     * @param $params   - array of binded params
      *
      * @return array, result of query
     **/
     public function queryRow($sql, $params = array())
     {
-        $statement = self::$_connections[$this->_dbName]->query($sql);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->_prepareAndBindParams($sql, $params);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
      * Function makes query with params and returns 1 column
      *
-     * @param $params - array of binded params
+     * @param $sql      - string
+     * @param $params   - array of binded params
      *
      * @return array, result of query
     **/
     public function queryColumn($sql, $params = array())
     {
-        $statement = self::$_connections[$this->_dbName]->query($sql);
+        $stmt = $this->_prepareAndBindParams($sql, $params);
         $result = [];
-        foreach($statement->fetchColumn() as $column)
+        foreach($stmt->fetchColumn() as $column)
         {
             $result[] = $column;
         }
@@ -82,26 +85,65 @@ class DB
     /**
      * Function makes query with params and returns 1 scalar value
      *
-     * @param $params - array of binded params
+     * @param $sql      - string
+     * @param $params   - array of binded params
      *
      * @return scalar
     **/
     public function queryScalar($sql, $params = array())
     {
-        $statement = self::$_connections[$this->_dbName]->query($sql);
+        $stmt = $this->_prepareAndBindParams($sql, $params);
         $result = [];
-        return current($statement->fetch(PDO::FETCH_ASSOC));
+        return current($stmt->fetch(PDO::FETCH_ASSOC));
     }
 
     /**
      * Function makes query with params and returns count
      *
-     * @param $params - array of binded params
+     * @param $sql      - string
+     * @param $params   - array of binded params
      *
      * @return int
     **/
     public function execute($sql, $params = array())
     {
-        return self::$_connections[$this->_dbName]->exec($sql);
+        $stmt = $this->_prepareAndBindParams($sql, $params);
+        return $stmt->execute();
+    }
+
+    /**
+     * Function prepares statement and binds params
+     *
+     * @param $sql      - string
+     * @param $params   - array of binded params
+     *
+     * @return PDOStatement
+    **/
+    private function _prepareAndBindParams($sql, $params)
+    {
+        $stmt = self::$_connections[$this->_dbName]->prepare($sql);
+        foreach($params as $key => $value)
+        {
+            if(is_int($value))
+            {
+                $stmt->bindValue($key, $value, PDO::PARAM_INT);
+            }
+            else
+            {
+                $stmt->bindValue($key, $value, PDO::PARAM_STR);
+            }
+        }
+
+        return $stmt;
+    }
+
+    /**
+     * Function returns last insert ID
+     *
+     * @return int
+    **/
+    public function lastInsertId()
+    {
+        return self::$_connections[$this->_dbName]->lastInsertId();
     }
 }
