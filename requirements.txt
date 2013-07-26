@@ -1,0 +1,4 @@
+1. YAML:
+    - sudo apt-get install libyaml-dev
+    - sudo pecl install yaml
+    - add extension=yaml.so to php.ini

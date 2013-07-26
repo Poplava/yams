@@ -14,6 +14,7 @@ class Config
     **/
     static public function get($name, $params)
     {
-        
+        $config = yaml_parse_file("configs/{$name}.yaml");
+        return $config['default'];
     }
 }
