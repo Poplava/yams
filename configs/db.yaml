@@ -1,0 +1,5 @@
+default:
+    host: somehost
+    username: someusername
+    password: somepassword
+    dbname: somedbname
