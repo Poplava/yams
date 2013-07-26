@@ -37,4 +37,15 @@ abstract class Controller
     {
         return $this->_params[$name];
     }
+
+    /**
+     * Function sends json response to client
+     *
+     * @param $data - array
+    **/
+    public function response($data)
+    {
+        header('Content-type: application/json;charset=UTF-8');
+        die(json_encode($data));
+    }
 }
