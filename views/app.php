@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="yams">
 <head>
     <title>Yams</title>
     <?php foreach($this->css as $cssFile): ?>
@@ -14,8 +14,8 @@
             <a href="/">Yams</a>
         </div>
         <div class="sign-buttons">
-            <a href="/signup" class="btn btn-success">Sign up</a>
-            <a href="/signin" class="btn">Sign in</a>
+            <a href="/register" class="btn btn-success">Sign up</a>
+            <a href="/login" class="btn">Sign in</a>
         </div>
     </div>
 </header>
