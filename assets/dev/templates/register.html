@@ -7,22 +7,22 @@
             <div class="alert alert-danger" ng-class="{ hidden: !errors.form }">
                 There were problems creating your account.
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.email }">
                 <input ng-model="regData.email" type="text" class="input-block-level" placeholder="Email" />
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.login }">
                 <input ng-model="regData.login" type="text" class="input-block-level" placeholder="Login" />
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.firstName }">
                 <input ng-model="regData.firstName" type="text" class="input-block-level" placeholder="First name" />
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.lastName }">
                 <input ng-model="regData.lastName" type="text" class="input-block-level" placeholder="Last name" />
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.password }">
                 <input ng-model="regData.password" type="password" class="input-block-level" placeholder="Password" />
             </div>
-            <div class="control-group">
+            <div class="control-group" ng-class="{ error: errors.passwordConfirm }">
                 <input ng-model="regData.passwordConfirm" type="password" class="input-block-level" placeholder="Password confirm" />
             </div>
             <div class="control-group text-center">
