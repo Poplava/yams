@@ -1,6 +1,7 @@
 'use strict';
 
 app.controller('RegisterCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.loading = !1;
     $scope.regData = {
         email: "",
         login: "",
@@ -21,8 +22,11 @@ app.controller('RegisterCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.submitForm = function() {
         if($scope.validate()) {
+            $scope.loading = !0;
             $http.post('/register', $scope.regData).success(function() {
-
+                $scope.loading = !1;
+            }).error(function() {
+                $scope.loading = !1;
             });
         }
     };
