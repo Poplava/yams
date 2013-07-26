@@ -41,9 +41,13 @@ class Application
     **/
     public function run()
     {
-        //@TODO make routing
-        require_once('controllers/AppController.php');
-        $controller = new AppController();
-        $controller->run();
+        $controller = trim($_SERVER['REQUEST_URI'], '/');
+        if(empty($controller)) $controller = 'app';
+        $controller = ucfirst($controller) . 'Controller';
+
+        require_once("controllers/{$controller}.php");
+        $params = json_decode(file_get_contents('php://input'), 1);
+        $controller = new $controller();
+        $controller->run($params);
     }
 }
