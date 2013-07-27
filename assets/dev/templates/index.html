@@ -1,18 +1,28 @@
-<div class="auth-box">
-    <header>
-        <h2 class="text-center">Sign in</h2>
-    </header>
-    <section>
-        <form>
-            <div class="control-group">
-                <input ng-model="regData.login" type="text" class="input-block-level" placeholder="Login" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-offset-4">
+            <div class="auth-box">
+                <header>
+                    <h2 class="text-center">Sign in</h2>
+                </header>
+                <section>
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="inputLogin">Login</label>
+                                <input type="text" class="form-control" id="inputLogin" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" class="form-control" id="inputPassword" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-default" ng-click="submitForm()">Sign in</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
             </div>
-            <div class="control-group">
-                <input ng-model="regData.password" type="password" class="input-block-level" placeholder="Password" />
-            </div>
-            <div class="control-group text-center">
-                <button class="btn btn-large btn-success" ng-click="submitForm()">Sign in</button>
-            </div>
-        </form>
-    </section>
+        </div>
+    </div>
 </div>

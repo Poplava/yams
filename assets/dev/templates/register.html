@@ -1,41 +1,50 @@
-<div class="auth-box" ng-class="{ loading: loading }">
-    <div class="loading-box">
-        <div class="progress progress-striped active">
-            <div class="bar" style="width: 100%"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-offset-4">
+            <div class="auth-box">
+                <header>
+                    <h2 class="text-center">Sign up</h2>
+                </header>
+                <section>
+                    <form name="regUserForm" ng-show="!regComplete" novalidate>
+                        <fieldset>
+                            <div class="alert alert-danger" ng-show="regError">
+                                There were problems creating your account.
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input name="email" ng-model="regUser.email" type="email" required class="form-control" id="inputEmail" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLogin">Login</label>
+                                <input name="login" ng-model="regUser.login" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputLogin" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFirstName">First name</label>
+                                <input name="firstName" ng-model="regUser.firstName" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputFirstName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLastName">Last name</label>
+                                <input name="lastName" ng-model="regUser.lastName" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputLastName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <input name="password" ng-model="regUser.password" type="password" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputPassword" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPasswordConfirm">Password confirm</label>
+                                <input name="passwordConfirm" ng-model="passwordConfirm" type="password" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputPasswordConfirm" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-default" ng-disabled="!regUserForm.$valid" ng-click="submitForm()">Sign up for Yams!</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="reg-complete text-center" ng-show="regComplete">
+                        <p>Registration complete.<br />Please confirm your email.</p>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-    <header>
-        <h2 class="text-center">Sign up</h2>
-    </header>
-    <section>
-        <form name="regUserForm" ng-show="!regComplete" novalidate>
-            <div class="alert alert-danger" ng-show="regError">
-                There were problems creating your account.
-            </div>
-            <div class="control-group">
-                <input name="email" ng-model="regUser.email" type="email" required class="input-block-level" placeholder="Email" />
-            </div>
-            <div class="control-group">
-                <input name="login" ng-model="regUser.login" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="input-block-level" placeholder="Login" />
-            </div>
-            <div class="control-group">
-                <input name="firstName" ng-model="regUser.firstName" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="input-block-level" placeholder="First name" />
-            </div>
-            <div class="control-group">
-                <input name="lastName" ng-model="regUser.lastName" type="text" pattern="[0-9a-zA-Z\._-]{3,}" required class="input-block-level" placeholder="Last name" />
-            </div>
-            <div class="control-group">
-                <input name="password" ng-model="regUser.password" type="password" required class="input-block-level" placeholder="Password" />
-            </div>
-            <div class="control-group">
-                <input name="passwordConfirm" ng-model="passwordConfirm" type="password" required class="input-block-level" placeholder="Confirm password" />
-            </div>
-            <div class="control-group text-center">
-                <button class="btn btn-large btn-success" ng-disabled="!regUserForm.$valid" ng-click="submitForm()">Sign up for Yams!</button>
-            </div>
-        </form>
-        <div class="reg-complete text-center" ng-show="regComplete">
-            <p>Registration complete.<br />Please confirm your email.</p>
-        </div>
-    </section>
 </div>

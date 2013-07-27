@@ -21,3 +21,10 @@
   -moz-transition: @t;
   transition: @t;
 }
+
+._gr(@dir, @c1, @c2) {
+  background: @c1;
+  background-image: -webkit-linear-gradient(@dir, @c1, @c2);
+  background-image: -moz-linear-gradient(@dir, @c1, @c2);
+  background-image: linear-gradient(@dir, @c1, @c2);
+}

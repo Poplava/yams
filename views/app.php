@@ -10,17 +10,20 @@
 
 <header class="site-header">
     <div class="container">
-        <div class="logo">
-            <a href="/">Yams</a>
-        </div>
-        <div class="sign-buttons">
-            <a href="/register" class="btn btn-success">Sign up</a>
-            <a href="/login" class="btn">Sign in</a>
+        <div class="row">
+            <div class="col-lg-4 logo">
+                <a href="/">Yams</a>
+            </div>
+            <div class="col-lg-8 text-right">
+                <a class="btn btn-success" href="/register">Sign up</a>
+                <a class="btn btn-default" href="/">Sign in</a>
+            </div>
         </div>
     </div>
 </header>
 
-<div class="container" ng-view></div>
+<div class="site-main" ng-view></div>
+
     <?php foreach($this->js as $jsFile): ?>
         <script src="<?= $jsFile ?>"></script>
     <?php endforeach; ?>

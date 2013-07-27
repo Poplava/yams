@@ -7,50 +7,55 @@ body {
 }
 
 .site-header {
-  border-bottom: 1px solid #ccc;
+  background: #fff;
+  @c: fade(#000, 30%);
+  ._shadow(~"0 0 3px @{c}");
+  border-bottom: 1px solid #e5e5e5;
   padding: 10px 0;
-  margin: 0 0 20px;
-  .logo {
-    float: left;
-    font: 40px/30px 'Ubuntu', sans-serif;
-    font-weight: bold;
-    a {
-      color: #333;
-      text-decoration: none;
-    }
+  position: fixed;
+  ._transition(top .3s);
+  top: -38px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    bottom: 6px;
+    left: 50%;
+    margin-left: -20px;
+    background: #fff;
+    border-top: 3px solid #e5e5e5;
+    border-bottom: 3px solid #e5e5e5;
   }
-  .sign-buttons {
-    float: right;
+  &:hover {
+    top: 0;
+  }
+  .logo {
+    font: bold 38px/38px 'Ubuntu', sans-serif;
+    a {
+      text-decoration: none;
+      color: #333;
+    }
   }
 }
 
-// Sign in form
-.form-signin {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 20px auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  position: relative;
-  ._radius;
-  ._shadow(0 1px 2px fade(#000, 5%));
-  .form-signin-heading {
-    margin-bottom: 10px;
-    text-align: center;
-  }
+.site-main {
+  padding: 40px 0;
 }
 
 .auth-box {
-  max-width: 300px;
-  margin: 0 auto;
   background-color: #fff;
   border: 1px solid #e5e5e5;
   position: relative;
   ._radius;
   ._shadow(0 1px 2px fade(#000, 5%));
   header {
-    background: #333;
-    color: #f9f9f9;
+    background: #3a3c3c;
+    color: #fff;
     border-bottom: 1px solid #e5e5e5;
     overflow: hidden;
     ._radius(5px 5px 0 0);
@@ -63,29 +68,6 @@ body {
     padding: 10px 10px 0;
     form {
       margin: 0;
-    }
-    input {
-      margin: 0;
-    }
-  }
-  .loading-box {
-    position: absolute;
-    z-index: 10;
-    background: fade(#fff, 80%);
-    display: none;
-    width: 100%;
-    height: 100%;
-    .progress {
-      width: 50%;
-      position: relative;
-      top: 50%;
-      margin-top: -10px;
-      margin: 0 auto;
-    }
-  }
-  &.loading {
-    .loading-box {
-      display: block;
     }
   }
 }
