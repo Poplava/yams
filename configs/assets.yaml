@@ -7,5 +7,6 @@ default:
         - /assets/dev/js/libs/jquery.js
         - /assets/dev/js/libs/bootstrap.js
         - /assets/dev/js/app.js
-        - /assets/dev/js/controllers/index.js
-        - /assets/dev/js/controllers/register.js
+        - /assets/dev/js/controllers/Index.js
+        - /assets/dev/js/controllers/Register.js
+        - /assets/dev/js/services/Auth.js
