@@ -8,8 +8,8 @@
         <h2 class="text-center">Sign up</h2>
     </header>
     <section>
-        <form name="regUserForm" novalidate>
-            <div class="alert alert-danger" ng-show="!regUser.$valid">
+        <form name="regUserForm" ng-show="!regComplete" novalidate>
+            <div class="alert alert-danger" ng-show="regError">
                 There were problems creating your account.
             </div>
             <div class="control-group">
@@ -34,5 +34,8 @@
                 <button class="btn btn-large btn-success" ng-disabled="!regUserForm.$valid" ng-click="submitForm()">Sign up for Yams!</button>
             </div>
         </form>
+        <div class="reg-complete text-center" ng-show="regComplete">
+            <p>Registration complete.<br />Please confirm your email.</p>
+        </div>
     </section>
 </div>
