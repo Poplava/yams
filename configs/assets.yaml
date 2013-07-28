@@ -1,6 +1,6 @@
 default:
     css:
-        - /assets/dev/css/bootstrap.min.css
+        - /assets/dev/css/bootstrap.css
         - /assets/dev/css/style.css
     js:
         - /assets/dev/js/libs/angular.js
