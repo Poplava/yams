@@ -1,0 +1,24 @@
+{
+  "name": "yams",
+  "version": "0.0.1",
+  "description": "yet another management system",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Poplava/yams.git"
+  },
+  "keywords": [
+    "yams"
+  ],
+  "author": "Igor Poplavsky",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/Poplava/yams/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}

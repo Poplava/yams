@@ -1,4 +1,5 @@
 # JetBrains Web/PHPStorm
 .idea
-
+*.css
+node_modules
 *.swp
