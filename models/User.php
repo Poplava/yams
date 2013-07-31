@@ -41,8 +41,4 @@ class User
 
         return $db->lastInsertId();
     }
-
-    public function get($userIds)
-    {
-    }
 }
