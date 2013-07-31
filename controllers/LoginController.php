@@ -2,11 +2,22 @@
 
 class LoginController extends Controller
 {
+    public function allowed($params = array())
+    {
+        return !Session::getInstance()->isAuthorized();
+    }
+
     public function run($params = array())
     {
         if($this->isPutRequest())
         {
-            $this->response(array('result' => User::authorize($params)));
+            $result = User::authorize($params);
+            if (!empty($result))
+            {
+                Session::getInstance()->authorize();
+            }
+
+            $this->response(array('result' => $result));
         }
         else
         {

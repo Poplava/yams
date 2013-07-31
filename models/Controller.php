@@ -14,6 +14,17 @@ abstract class Controller
     **/
     abstract public function run($params = array());
 
+    abstract public function allowed($params = array());
+
+    final public function acl($params = array())
+    {
+        if (!$this->allowed($params))
+        {
+            // redirect to some default page, as for authorized as
+            // for unauthorized user
+        }
+    }
+
     /**
      * Function renders view from views/*
      *

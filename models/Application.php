@@ -16,6 +16,8 @@ class Application
         ini_set('html_errors', 'on');
 
         spl_autoload_register(array($this, '_autoLoader'));
+
+        Session::getInstance()->start();
     }
 
     /**
@@ -48,6 +50,7 @@ class Application
         require_once("controllers/{$controller}.php");
         $params = json_decode(file_get_contents('php://input'), 1);
         $controller = new $controller();
+        $controller->acl($params);
         $controller->run($params);
     }
 }

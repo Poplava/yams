@@ -2,6 +2,11 @@
 
 class RegisterController extends Controller
 {
+    public function allowed($params = array())
+    {
+        return Session::getInstance()->isAuthorized();
+    }
+
     public function run($params = array())
     {
         if($this->isPostRequest())
