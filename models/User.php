@@ -11,7 +11,6 @@ class User
      * Function creates new user and returns its id
      *
      * @param $userData = array(
-     *      'login'     => string,
      *      'password'  => string,
      *      'email'     => string,
      *      'lastName'  => string,
@@ -27,7 +26,6 @@ class User
                 INSERT INTO user
                 SET
                     email           = :email,
-                    login           = :login,
                     passwordHash    = :passwordHash,
                     firstName       = :firstName,
                     lastName        = :lastName,
@@ -35,7 +33,6 @@ class User
             ",
             array(
                 ':email'        => $userData['email'],
-                ':login'        => $userData['login'],
                 ':passwordHash' => crypt($userData['password'], self::$_salt),
                 ':firstName'    => $userData['firstName'],
                 ':lastName'     => $userData['lastName'],
