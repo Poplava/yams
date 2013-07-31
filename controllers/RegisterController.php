@@ -4,7 +4,7 @@ class RegisterController extends Controller
 {
     public function run($params = array())
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        if($this->isPostRequest())
         {
             $userId = User::create($params);
             $this->response(array('userId' => $userId));
