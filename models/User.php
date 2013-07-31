@@ -41,4 +41,35 @@ class User
 
         return $db->lastInsertId();
     }
+
+    /**
+     * Function authorizes user and returns exists user or not.
+     * Function tries to find user with given email and password.
+     * First part of email also correct, and function tries to find
+     * user only by first part of email(separated by @) and password.
+     *
+     * @param $loginData = array(
+     *      'login'      => string,
+     *      'password'   => string,
+     * );
+     *
+     * @return boolean, true if user exists, false otherwise
+    **/
+    public static function authorize($loginData)
+    {
+        $db = new DB();
+        return (bool)$db->queryScalar("
+                SELECT 1
+                FROM user
+                WHERE
+                    (email = :email OR email LIKE :emailLogin) AND
+                    passwordHash = :passwordHash
+                ",
+            array(
+                ':email' => $loginData['login'],
+                ':emailLogin' => $loginData['login'] . '@%',
+                ':passwordHash' => crypt($loginData['password'], self::$_salt),
+            )
+        );
+    }
 }

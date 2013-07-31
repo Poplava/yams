@@ -38,6 +38,46 @@ abstract class Controller
         return $this->_params[$name];
     }
 
+     /**
+     * Returns whether this is a PUT request.
+     *
+     * @return boolean whether this is a PUT request.
+     */
+    public function isPutRequest()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'PUT';
+    }
+
+     /**
+     * Returns whether this is a GET request.
+     *
+     * @return boolean whether this is a GET request.
+     */
+    public function isGetRequest()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
+    }
+
+    /**
+     * Returns whether this is a POST request.
+     *
+     * @return boolean whether this is a POST request.
+     */
+    public function isPostRequest()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+
+    /**
+     * Returns whether this is a DELETE request.
+     *
+     * @return boolean whether this is a DELETE request.
+     */
+    public function isDeleteRequest()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'DELETE';
+    }
+
     /**
      * Function sends json response to client
      *
