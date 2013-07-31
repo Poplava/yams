@@ -1,2 +1,2 @@
-yams
+yams - yet another management system
 ====
