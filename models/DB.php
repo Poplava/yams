@@ -39,10 +39,16 @@ class DB
     public function query($sql, $params = array())
     {
         $stmt = $this->_prepareAndBindParams($sql, $params);
+        $stmt->execute();
         $result = [];
-        foreach($stmt->fetch(PDO::FETCH_ASSOC) as $row)
+
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!empty($res))
         {
-            $result[] = $row;
+            foreach($res as $row)
+            {
+                $result[] = $row;
+            }
         }
 
         return $result;
@@ -59,6 +65,7 @@ class DB
     public function queryRow($sql, $params = array())
     {
         $stmt = $this->_prepareAndBindParams($sql, $params);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -73,6 +80,8 @@ class DB
     public function queryColumn($sql, $params = array())
     {
         $stmt = $this->_prepareAndBindParams($sql, $params);
+        $stmt->execute();
+
         $result = [];
         foreach($stmt->fetchColumn() as $column)
         {
@@ -93,8 +102,8 @@ class DB
     public function queryScalar($sql, $params = array())
     {
         $stmt = $this->_prepareAndBindParams($sql, $params);
-        $result = [];
-        return current($stmt->fetch(PDO::FETCH_ASSOC));
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
