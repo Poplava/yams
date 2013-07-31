@@ -6,6 +6,13 @@ app.factory('Auth', ['$http', function($http) {
             }).error(function() {
                 if(typeof error === 'function') error(res);
             });
+        },
+        login: function(data, success, error) {
+            $http.put('/login', data).success(function(res) {
+                if(typeof success === 'function') success(res);
+            }).error(function() {
+                if(typeof error === 'function') error(res);
+            });
         }
     };
 }]);
