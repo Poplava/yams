@@ -27,10 +27,6 @@
                                 <label for="inputPassword">Password</label>
                                 <input name="password" ng-model="regUser.password" type="password" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputPassword" />
                             </div>
-                            <div class="form-group">
-                                <label for="inputPasswordConfirm">Password confirm</label>
-                                <input name="passwordConfirm" ng-model="passwordConfirm" type="password" pattern="[0-9a-zA-Z\._-]{3,}" required class="form-control" id="inputPasswordConfirm" />
-                            </div>
                             <div class="form-group text-center">
                                 <button class="btn btn-default" ng-disabled="!regUserForm.$valid" ng-click="submitForm()">Sign up for Yams!</button>
                             </div>

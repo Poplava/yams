@@ -5,7 +5,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', 'Auth', function($scope, $htt
         $scope.regError = !1;
 
     $scope.submitForm = function() {
-        if($scope.regUserForm && $scope.regUser.password === $scope.passwordConfirm) {
+        if($scope.regUserForm) {
             Auth.register($scope.regUser, function(res) {
                 if(res.userId > 0) {
                     console.log(res);
@@ -22,7 +22,6 @@ app.controller('RegisterCtrl', ['$scope', '$http', 'Auth', function($scope, $htt
     $scope.formError = function(res) {
         console.log(res);
         $scope.regError = !0;
-        $scope.regUser.password = $scope.passwordConfirm = '';
     };
 
 }]);
