@@ -1,7 +1,14 @@
 yams - yet another management system
 ====
 
-### Less compile
+### Assets builder
+
+Install node modules
+```
+$ npm install
+```
+
+Deploy assets
 ```
 $ grunt
 ```
