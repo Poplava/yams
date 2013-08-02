@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-offset-4">
+            <form name="regUserForm" ng-show="!regComplete" novalidate>
+                <fieldset>
+                    <div class="form-group">
+                        <label>User id:</label>
+                        <input ng-model="userId" type="text" required class="form-control" />
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-danger" ng-click="getUser(userId)">Get user!</button>
+                    </div>
+                    <pre ng-show="resData" ng-model="resData"></pre>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

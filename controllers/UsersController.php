@@ -12,4 +12,10 @@ class UsersController extends Controller
         $userId = User::create($params);
         $this->response(array('userId' => $userId));
     }
+
+    public function get($params)
+    {
+        $user = User::get($params);
+        $this->response($user);
+    }
 }

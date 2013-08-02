@@ -51,12 +51,14 @@ class Application
         }
         else
         {
-            $controller = trim($_SERVER['REQUEST_URI'], '/');
+            $controller = trim($_SERVER['SCRIPT_URL'], '/');
             $controller = ucfirst($controller) . 'Controller';
 
             require_once("controllers/{$controller}.php");
             $controller = new $controller();
             $params = json_decode(file_get_contents('php://input'), 1);
+            if(empty($params)) $params = $_REQUEST;
+
             $controller->run($params);
         }
     }

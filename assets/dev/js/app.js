@@ -18,6 +18,11 @@ var app = angular.module('yams', [])
             controller:     'IssuesCtrl'
         });
 
+        $routeProvider.when('/test', {
+            templateUrl:    '/assets/dev/templates/test.html',
+            controller:     'TestCtrl'
+        });
+
         $routeProvider.otherwise({redirectTo:'/'});
 
         $locationProvider.html5Mode(true);
