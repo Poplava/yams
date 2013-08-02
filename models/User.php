@@ -59,7 +59,14 @@ class User
         $userId = $params['userId'];
         unset($params['userId']);
 
-        $parts = [];
+        $parts = $bindParams = [];
+        if(isset($params['password']))
+        {
+            $parts[] = "passwordHash = :passwordHash";
+            $bindParams[':passwordHash'] = crypt($params['password']);
+            unset($params['password']);
+        }
+
         $bindParams[':userId'] = $userId;
         foreach($params as $key => $value)
         {
@@ -121,7 +128,7 @@ class User
     /**
      * Function authenticates user and returns exists user or not.
      * It tries to find user with given email and password.
-     * First part of email also correct, and function tries to find
+     * First part of email also correct, and tries to find
      * user only by first part of email(separated by @) and password.
      *
      * @param $loginData = array(
