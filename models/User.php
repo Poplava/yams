@@ -42,6 +42,58 @@ class User
         return $db->lastInsertId();
     }
 
+    /**
+     * Function updates user by params
+     *
+     * @param $params - array
+     *      'password'  => string,
+     *      'email'     => string,
+     *      'lastName'  => string,
+     *      'firstName' => string,
+     * );
+     *
+     * @return true on success, false otherwise
+    **/
+    static public function update($params)
+    {
+        $userId = $params['userId'];
+        unset($params['userId']);
+
+        $parts = [];
+        $bindParams[':userId'] = $userId;
+        foreach($params as $key => $value)
+        {
+            $parts[] = "$key = :$key";
+            $bindParams[":$key"] = $value;
+        }
+
+        $db = new DB();
+        $count = $db->execute("
+            UPDATE user
+            SET " . implode(",\n", $parts) . "
+            WHERE userId = :userId
+            ",
+            $bindParams
+        );
+
+        return $count > 0;
+    }
+
+    /**
+     * Function gets user data by id and other params
+     *
+     * @param $params = array(
+     *      'userId' => int,
+     * );
+     *
+     * @param $params - array
+     *      'email'     => string,
+     *      'lastName'  => string,
+     *      'firstName' => string,
+     *      ...
+     * );
+
+    **/
     public static function get($params)
     {
         $db = new DB();

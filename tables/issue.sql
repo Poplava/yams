@@ -1,6 +1,6 @@
 CREATE TABLE issue
 (
-    issueId int not null primary key,
+    issueId int not null auto_increment primary key,
     parentId int,
     issueTypeId tinyint not null,
     issueStatusId tinyint not null,

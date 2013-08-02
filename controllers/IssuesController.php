@@ -2,9 +2,30 @@
 
 class IssuesController extends Controller
 {
-    public function run($params = array())
+    public function allowed(array $params = array())
     {
-        $assets = Config::get('assets');
-        $this->view('app', $assets);
+        return true;
+    }
+
+    public function post($params = array())
+    {
+        $issueId = Issue::create($params);
+        $this->response(array('issueId' => $issueId));
+    }
+
+    public function get($params = array())
+    {
+        $issue = Issue::get($params);
+        $this->response(array('issue' => $issue));
+    }
+
+    public function put($params = array())
+    {
+        Issue::update($params);
+    }
+
+    public function delete($params = array())
+    {
+        Issue::delete($params);
     }
 }

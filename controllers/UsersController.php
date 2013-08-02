@@ -13,6 +13,12 @@ class UsersController extends Controller
         $this->response(array('userId' => $userId));
     }
 
+    public function put($params = array())
+    {
+        $success = User::update($params);
+        $this->response(array('success' => $success));
+    }
+
     public function get($params)
     {
         $user = User::get($params);
