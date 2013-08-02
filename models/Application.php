@@ -16,6 +16,8 @@ class Application
         ini_set('html_errors', 'on');
 
         spl_autoload_register(array($this, '_autoLoader'));
+
+        Session::getInstance()->start();
     }
 
     /**
@@ -32,22 +34,30 @@ class Application
         }
         else
         {
-            //@TODO errors handling
+            trigger_error(E_USER_WARNING, "There is no such model '$className'.");
         }
-    } 
+    }
 
     /**
      * Function performs routing and other application things
     **/
     public function run()
     {
-        $controller = trim($_SERVER['REQUEST_URI'], '/');
-        if(empty($controller)) $controller = 'app';
-        $controller = ucfirst($controller) . 'Controller';
+        if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']))
+        {
+            require_once("controllers/AppController.php");
+            $controller = new AppController();
+            $controller->run();
+        }
+        else
+        {
+            $controller = trim($_SERVER['REQUEST_URI'], '/');
+            $controller = ucfirst($controller) . 'Controller';
 
-        require_once("controllers/{$controller}.php");
-        $params = json_decode(file_get_contents('php://input'), 1);
-        $controller = new $controller();
-        $controller->run($params);
+            require_once("controllers/{$controller}.php");
+            $controller = new $controller();
+            $params = json_decode(file_get_contents('php://input'), 1);
+            $controller->run($params);
+        }
     }
 }
