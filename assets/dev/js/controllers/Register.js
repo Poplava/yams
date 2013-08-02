@@ -1,12 +1,12 @@
 'use strict';
 
-app.controller('RegisterCtrl', ['$scope', '$http', 'User', function($scope, $http, User) {
+app.controller('RegisterCtrl', ['$scope', '$http', 'Users', function($scope, $http, Users) {
     $scope.regComplete =
         $scope.regError = false;
 
     $scope.submitForm = function() {
         if($scope.regUserForm) {
-            Auth.register($scope.regUser, function(res) {
+            Users.register($scope.regUser, function(res) {
                 if(res.userId > 0) {
                     console.log(res);
                     $scope.regComplete = true;

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('IssuesCtrl', ['$scope', '$http', 'User', function($scope, $http, User) {
+app.controller('IssuesCtrl', ['$scope', '$http', 'Users', function($scope, $http, Users) {
 
     $scope.issuesCollection = [
         {
