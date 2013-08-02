@@ -5,7 +5,7 @@
 **/
 class User
 {
-    static $_salt = 'sh1239shgdfhgdfgnzxcd';
+    static $_passwordSalt = 'sh1239shgdfhgdfgnzxcd';
 
     /**
      * Function creates new user and returns its id
@@ -33,7 +33,7 @@ class User
             ",
             array(
                 ':email'        => $userData['email'],
-                ':passwordHash' => crypt($userData['password'], self::$_salt),
+                ':passwordHash' => crypt($userData['password'], self::$_passwordSalt),
                 ':firstName'    => $userData['firstName'],
                 ':lastName'     => $userData['lastName'],
             )
@@ -42,9 +42,33 @@ class User
         return $db->lastInsertId();
     }
 
+    public static function get($params)
+    {
+        $db = new DB();
+        $user = $db->queryRow("
+            SELECT
+                roleId,
+                email,
+                firstName,
+                lastName,
+                karma,
+                avatarFile,
+                registeredOn
+            FROM user
+            WHERE
+                userId = :userId
+            ",
+            array(
+                ':userId' => $params['userId'],
+            )
+        );
+
+        return $user;
+    }
+
     /**
      * Function authenticates user and returns exists user or not.
-     * Function tries to find user with given email and password.
+     * It tries to find user with given email and password.
      * First part of email also correct, and function tries to find
      * user only by first part of email(separated by @) and password.
      *
@@ -68,7 +92,7 @@ class User
             array(
                 ':email' => $loginData['login'],
                 ':emailLogin' => $loginData['login'] . '@%',
-                ':passwordHash' => crypt($loginData['password'], self::$_salt),
+                ':passwordHash' => crypt($loginData['password'], self::$_passwordSalt),
             )
         );
     }

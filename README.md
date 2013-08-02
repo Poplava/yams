@@ -25,15 +25,17 @@ POST /users
 }
 
 # Get user info
-GET /users?id=1
+GET /users?userId=1
 
 response:
 {
-    "id": 1,
-    "email": "some@email.com",
-    "firstName": "Ivan",
-    "lastName": "Ivanov",
-    ...
+    "roleId":"0",
+    "email":"some@email.com",
+    "firstName":"Ivan",
+    "lastName":"Ivanov",
+    "karma":"0",
+    "avatarFile":null,
+    "registeredOn":"2013-07-30 19:36:20"
 }
 
 # Update user info
