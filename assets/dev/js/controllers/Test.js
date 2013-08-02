@@ -11,6 +11,7 @@ app.controller('TestCtrl', ['$scope', '$location', 'Users', function($scope, $lo
     $scope.updateUser = function() {
         Users.updateUser($scope.userId, $scope.resData, function(res) {
             $scope.resData = $scope.userId = "";
+            $scope.loader = false;
         });
     };
 }]);
