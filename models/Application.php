@@ -43,13 +43,21 @@ class Application
     **/
     public function run()
     {
-        $controller = trim($_SERVER['REQUEST_URI'], '/');
-        if(empty($controller)) $controller = 'app';
-        $controller = ucfirst($controller) . 'Controller';
+        if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']))
+        {
+            require_once("controllers/AppController.php");
+            $controller = new AppController();
+            $controller->run();
+        }
+        else
+        {
+            $controller = trim($_SERVER['REQUEST_URI'], '/');
+            $controller = ucfirst($controller) . 'Controller';
 
-        require_once("controllers/{$controller}.php");
-        $controller = new $controller();
-        $params = json_decode(file_get_contents('php://input'), 1);
-        $controller->run($params);
+            require_once("controllers/{$controller}.php");
+            $controller = new $controller();
+            $params = json_decode(file_get_contents('php://input'), 1);
+            $controller->run($params);
+        }
     }
 }
