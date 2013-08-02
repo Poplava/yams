@@ -1,11 +1,16 @@
 'use strict';
 
-app.controller('TestCtrl', ['$scope', '$location', 'User', function($scope, $location, User) {
+app.controller('TestCtrl', ['$scope', '$location', 'Users', function($scope, $location, Users) {
     $scope.getUser = function(userId) {
-        User.getUser(userId, function(res) {
-            $scope.resData = JSON.stringify(res, null, 2);
-        }, function(res) {
-            $scope.resData = "request error";
+        $scope.loader = true;
+        $scope.resData = "";
+        Users.getUser(userId, function(res) {
+            $scope.resData = res;
+        });
+    };
+    $scope.updateUser = function() {
+        Users.updateUser($scope.userId, $scope.resData, function(res) {
+            $scope.resData = $scope.userId = "";
         });
     };
 }]);
