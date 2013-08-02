@@ -42,6 +42,18 @@ class User
         return $db->lastInsertId();
     }
 
+    /**
+     * Function updates user by params
+     *
+     * @param $params - array
+     *      'password'  => string,
+     *      'email'     => string,
+     *      'lastName'  => string,
+     *      'firstName' => string,
+     * );
+     *
+     * @return true on success, false otherwise
+    **/
     static public function update($params)
     {
         $userId = $params['userId'];
@@ -67,6 +79,21 @@ class User
         return $count > 0;
     }
 
+    /**
+     * Function gets user data by id and other params
+     *
+     * @param $params = array(
+     *      'userId' => int,
+     * );
+     *
+     * @param $params - array
+     *      'email'     => string,
+     *      'lastName'  => string,
+     *      'firstName' => string,
+     *      ...
+     * );
+
+    **/
     public static function get($params)
     {
         $db = new DB();
