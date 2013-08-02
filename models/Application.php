@@ -34,9 +34,9 @@ class Application
         }
         else
         {
-            //@TODO errors handling
+            trigger_error(E_USER_WARNING, "There is no such model '$className'.");
         }
-    } 
+    }
 
     /**
      * Function performs routing and other application things
@@ -48,9 +48,8 @@ class Application
         $controller = ucfirst($controller) . 'Controller';
 
         require_once("controllers/{$controller}.php");
-        $params = json_decode(file_get_contents('php://input'), 1);
         $controller = new $controller();
-        $controller->acl($params);
+        $params = json_decode(file_get_contents('php://input'), 1);
         $controller->run($params);
     }
 }

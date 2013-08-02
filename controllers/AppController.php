@@ -10,7 +10,7 @@ class AppController extends Controller
         return true;
     }
 
-    public function run($params = array())
+    public function get($params = array())
     {
         $assets = Config::get('assets');
         $this->view('app', $assets);
