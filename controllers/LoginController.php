@@ -11,7 +11,7 @@ class LoginController extends Controller
     {
         if($this->isPutRequest())
         {
-            $result = User::authorize($params);
+            $result = User::authenticate($params);
             if (!empty($result))
             {
                 Session::getInstance()->authorize();

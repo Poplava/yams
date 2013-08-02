@@ -14,8 +14,21 @@ abstract class Controller
     **/
     abstract public function run($params = array());
 
+    /**
+     * Function checks allowed current action
+     * for current user or not.
+     *
+     * @param $params - array of params
+    **/
     abstract public function allowed($params = array());
 
+    /**
+     * Function checks allowed current action
+     * for current user or not and does
+     * needed actions after check
+     *
+     * @param $params - array of params
+    **/
     final public function acl($params = array())
     {
         if (!$this->allowed($params))

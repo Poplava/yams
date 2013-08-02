@@ -43,7 +43,7 @@ class User
     }
 
     /**
-     * Function authorizes user and returns exists user or not.
+     * Function authenticates user and returns exists user or not.
      * Function tries to find user with given email and password.
      * First part of email also correct, and function tries to find
      * user only by first part of email(separated by @) and password.
@@ -55,7 +55,7 @@ class User
      *
      * @return boolean, true if user exists, false otherwise
     **/
-    public static function authorize($loginData)
+    public static function authenticate($loginData)
     {
         $db = new DB();
         return (bool)$db->queryScalar("
