@@ -9,4 +9,6 @@ default:
         - /assets/dev/js/controllers/Index.js
         - /assets/dev/js/controllers/Register.js
         - /assets/dev/js/controllers/Issues.js
+        - /assets/dev/js/controllers/Test.js
         - /assets/dev/js/services/User.js
+        - /assets/dev/js/services/Auth.js
