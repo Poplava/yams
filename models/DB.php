@@ -117,7 +117,8 @@ class DB
     public function execute($sql, $params = array())
     {
         $stmt = $this->_prepareAndBindParams($sql, $params);
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt->rowCount();
     }
 
     /**

@@ -42,6 +42,31 @@ class User
         return $db->lastInsertId();
     }
 
+    static public function update($params)
+    {
+        $userId = $params['userId'];
+        unset($params['userId']);
+
+        $parts = [];
+        $bindParams[':userId'] = $userId;
+        foreach($params as $key => $value)
+        {
+            $parts[] = "$key = :$key";
+            $bindParams[":$key"] = $value;
+        }
+
+        $db = new DB();
+        $count = $db->execute("
+            UPDATE user
+            SET " . implode(",\n", $parts) . "
+            WHERE userId = :userId
+            ",
+            $bindParams
+        );
+
+        return $count > 0;
+    }
+
     public static function get($params)
     {
         $db = new DB();
