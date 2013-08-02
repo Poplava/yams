@@ -2,14 +2,14 @@
 
 app.controller('RegisterCtrl', ['$scope', '$http', 'User', function($scope, $http, User) {
     $scope.regComplete =
-        $scope.regError = !1;
+        $scope.regError = false;
 
     $scope.submitForm = function() {
         if($scope.regUserForm) {
             Auth.register($scope.regUser, function(res) {
                 if(res.userId > 0) {
                     console.log(res);
-                    $scope.regComplete = !0;
+                    $scope.regComplete = true;
                 } else {
                     $scope.formError(res);
                 }
@@ -21,7 +21,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', 'User', function($scope, $htt
 
     $scope.formError = function(res) {
         console.log(res);
-        $scope.regError = !0;
+        $scope.regError = true;
     };
 
 }]);
