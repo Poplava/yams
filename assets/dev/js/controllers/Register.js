@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('RegisterCtrl', ['$scope', '$http', 'Auth', function($scope, $http, Auth) {
+app.controller('RegisterCtrl', ['$scope', '$http', 'User', function($scope, $http, User) {
     $scope.regComplete =
         $scope.regError = !1;
 
