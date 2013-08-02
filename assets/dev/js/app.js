@@ -13,6 +13,11 @@ var app = angular.module('yams', [])
             controller:     'RegisterCtrl'
         });
 
+        $routeProvider.when('/issues', {
+            templateUrl:    '/assets/dev/templates/issues.html',
+            controller:     'IssuesCtrl'
+        });
+
         $routeProvider.otherwise({redirectTo:'/'});
 
         $locationProvider.html5Mode(true);

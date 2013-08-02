@@ -1,12 +1,12 @@
 default:
     css:
-        - /assets/dev/css/bootstrap.css
-        - /assets/dev/css/style.css
+        - /assets/build/css/style.css
     js:
-        - /assets/dev/js/libs/angular.js
-        - /assets/dev/js/libs/jquery.js
+        - /assets/dev/js/libs/angular.min.js
+        - /assets/dev/js/libs/jquery.min.js
         - /assets/dev/js/libs/bootstrap.min.js
         - /assets/dev/js/app.js
         - /assets/dev/js/controllers/Index.js
         - /assets/dev/js/controllers/Register.js
+        - /assets/dev/js/controllers/Issues.js
         - /assets/dev/js/services/Auth.js

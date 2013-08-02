@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row issues-header">
+        <div class="col-lg-8 col-offset-2">
+            <div class="btn-group pull-right">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    {{ issuesTypeActive.title }} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="issueType in issuesTypes"><a tabindex="-1" href="#" ng-click="setIssuesType(issueType)">{{ issueType.title }}</a></li>
+                </ul>
+            </div>
+            <h1>Issues</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-offset-2">
+            <div class="issues">
+                <div ng-repeat="item in issuesCollection" class="panel">
+                    <h3>{{item.title}}</h3>
+                    {{item.description}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
