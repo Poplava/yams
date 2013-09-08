@@ -141,8 +141,8 @@ class User
     public static function authenticate($loginData)
     {
         $db = new DB();
-        return (bool)$db->queryScalar("
-                SELECT 1
+        return $db->queryScalar("
+                SELECT userId
                 FROM user
                 WHERE
                     (email = :email OR email LIKE :emailLogin) AND

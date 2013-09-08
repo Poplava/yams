@@ -10,11 +10,12 @@ class AuthController extends Controller
     public function put($params = array())
     {
         $result = User::authenticate($params);
-        if (!empty($result))
+        if (!empty($result) && isset($result['userId']))
         {
-            Session::getInstance()->authorize();
+            Session::getInstance()->authorize($result['userId']);
+            $this->response(array('result' => true));
         }
 
-        $this->response(array('result' => $result));
+        $this->response(array('result' => false));
     }
 }

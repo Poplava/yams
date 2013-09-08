@@ -27,15 +27,16 @@ class Session
      */
     public function start()
     {
+        session_set_cookie_params(604800);
         session_start();
     }
 
     /**
      * Function authorizes user
      */
-    public function authorize()
+    public function authorize($userId)
     {
-        $_SESSION['authorize'] = true;
+        $_SESSION['userId'] = $userId;
     }
 
     /**
@@ -43,7 +44,10 @@ class Session
      */
     public function unauthorize()
     {
-        $_SESSION['authorize'] = false;
+        if (isset($_SESSION['userId']))
+        {
+            unset($_SESSION['userId']);
+        }
     }
 
     /**
@@ -53,6 +57,11 @@ class Session
      */
     public function isAuthorized()
     {
-        return !empty($_SESSION['authorize']);
+        return !empty($_SESSION['userId']);
+    }
+
+    public function getUserId()
+    {
+        return $this->isAuthorized() ? $_SESSION['userId'] : null;
     }
 }

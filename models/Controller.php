@@ -46,8 +46,12 @@ abstract class Controller
     {
         if (!$this->allowed($params))
         {
-            // redirect to some default page, as for authorized as
-            // for unauthorized user
+            $this->response(array(
+                "error" => array(
+                    "type" =>  "authorization_required",
+                    "message" =>  "Session is required",
+                )
+            ));
         }
     }
 
