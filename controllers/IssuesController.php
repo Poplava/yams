@@ -4,7 +4,7 @@ class IssuesController extends Controller
 {
     public function allowed(array $params = array())
     {
-        return true;
+        return Session::getInstance()->isAuthorized();
     }
 
     public function post($params = array())
